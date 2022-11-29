@@ -65,6 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           },
           builder: (context, state) {
             return Scaffold(
+              appBar: AppBar(),
               backgroundColor: white,
               body: ListView(
                 children: [
@@ -93,6 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         //     color: Colors.grey.shade200,
                         //   ),
                         // ),
+
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 50),
@@ -202,13 +204,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     },
                                   ));
                                 },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Already have an account? ',
-                                        style: grayText),
-                                    Text('LOG IN', style: TextLoginButton),
-                                  ],
+                                child: Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('Already have an account? ',
+                                          style: grayText),
+                                      Text('Sign in', style: TextLoginButton),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

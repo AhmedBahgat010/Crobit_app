@@ -1,9 +1,10 @@
-import 'package:app_final/core/components/button_registration.dart';
-import 'package:app_final/core/resource/navigator.dart';
+import 'package:app_final/core/style/my_colors.dart';
+import 'package:app_final/view/Home/cubit/cubit.dart';
 import 'package:flutter/material.dart';
-
-import '../../network/data_resources/local/shared_preferences.dart';
-import '../registration/Login/login.dart';
+import 'package:bottom_bar_matu/bottom_bar_matu.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'cubit/States.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -12,20 +13,58 @@ class HomeLayout extends StatefulWidget {
   State<HomeLayout> createState() => _HomeLayoutState();
 }
 
+final PageController controller = PageController();
+
 class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-          child: ButtonSign(
-        ontap: () {
-          CacheHelper.removeToken(key: 'token').then((value) {
-            navigateAndFinished(context, LoginScreen());
-          });
-        },
-        text: "sign out",
-      )),
+    return BlocConsumer<HomeCubit, HomeStates>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        var cubit = HomeCubit.get(context);
+        return SafeArea(
+          child: Scaffold(
+            //BottomBarDoubleBullet
+            //BottomBarLabelSlide
+            bottomNavigationBar: SalomonBottomBar(
+              currentIndex:cubit!.currentIndex,
+              onTap: (i) => setState(() {
+                cubit.changeScreen(i);
+              }),
+              items: [
+                /// Home
+                SalomonBottomBarItem(
+
+                  icon: Icon(Icons.home,color:greenDark,size: 30),
+                  title: Text("Home"),
+                ),
+
+                /// Likes
+                SalomonBottomBarItem(
+                  icon: Icon(Icons.monitor_heart_outlined,color:greenDark,size: 30),
+                  title: Text("Likes"),
+                ),
+
+                /// Search
+                SalomonBottomBarItem(
+                  icon: Icon(Icons.location_on_outlined,color:greenDark,size: 30 ),
+                  title: Text("location"),
+                ),
+
+                /// Profile
+                SalomonBottomBarItem(
+                  icon: Icon(Icons.person_outline_outlined,color:greenDark,size: 30),
+                  title: Text("Profile"),
+                ),
+              ],
+            ),
+
+            body: cubit.HomeScreens[cubit.currentIndex],
+          ),
+        );
+      },
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:app_final/core/resource/navigator.dart';
 import 'package:app_final/core/style/my_style.dart';
+import 'package:app_final/view/registration/Forgot_password/forgotScreen.dart';
 import 'package:app_final/view/registration/Login/cubit/States.dart';
 import 'package:app_final/view/registration/Login/cubit/cubit.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -67,25 +68,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     key:        LoginCubit.get(context)?.formKey,
                     child: Stack(
                       children: [
-                        // Positioned(
-                        //     top: -250,
-                        //     right: -250,
-                        //     child: Transform(
-                        //         alignment: FractionalOffset.center,
-                        //         transform: Matrix4.rotationZ(
-                        //           3.1415926535897932 / 1,
-                        //         ),
-                        //         child: Image.asset(
-                        //           'assets/images/Pngtre.png',
-                        //           height: 500,
-                        //         ))),         Positioned(
-                        //   bottom: -250,
-                        //   left: -200,
-                        //   child: Image.asset(
-                        //     'assets/images/Pngtre.png',
-                        //     height: 400,color: Colors.grey.shade200,
-                        //   ),
-                        // ),
+                        Positioned(
+                            top: -250,
+                            right: -250,
+                            child: Transform(
+                                alignment: FractionalOffset.center,
+                                transform: Matrix4.rotationZ(
+                                  3.1415926535897932 / 1,
+                                ),
+                                child: Image.asset(
+                                  'assets/images/Pngtre.png',
+                                  height: 450,
+                                ))),
                         SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -126,8 +120,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     InkWell(
-                                        onTap: () {},
-                                        child: Text("Forgot password",
+                                        onTap: () {
+                                          navigateTo(context, ForgotScreen());
+                                        },
+                                        child: Text("Forgot password ?",
                                             style: labelStyle)),
                                   ],
                                 ),
@@ -181,18 +177,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ],
                                 ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 20,
                                 ),
                                 ////   icon facebook and gmail
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: 60,
+                                      width: 37,
                                       // height: 100,
                                       child: Image.asset(
                                         'assets/images/facebook.png',
-                                        width: 100,
+
                                       ),
                                     ),
                                     const SizedBox(
