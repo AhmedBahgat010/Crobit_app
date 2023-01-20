@@ -22,12 +22,10 @@ class _MapScreenState extends State<MapScreen> {
   void getLocation() async {
     LocationData myLocation = await LocationService().getLocation();
     var result = await polymaker.getLocation(
-
       context,
-
       trackingMode: TrackingMode.PLANAR,
       enableDragMarker: true,autoEditMode: false,
-      // iconEditMode:IconData(20,matchTextDirection: false),
+       // iconEditMode:IconData(20,matchTextDirection: false),
       targetCameraPosition: LatLng(myLocation.latitude!.toDouble()	, myLocation.longitude!.toDouble()),
     );
     if (result != null) {
@@ -67,7 +65,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
               onPressed: () => getLocation(),
               child: Text(
-                "حدد الارض يا فلااااح ",
+                "Select your land ",
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),

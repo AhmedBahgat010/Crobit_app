@@ -26,7 +26,7 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
         width: 175,
         height: 180,
         decoration:
-            BoxDecoration(color: green, borderRadius: BorderRadius.circular(30)),
+            BoxDecoration(color: AppColor.green, borderRadius: BorderRadius.circular(30)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Column(
@@ -34,7 +34,7 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
             children: [
               CircleAvatar(
 // backgroundImage: AssetImage('assets/images/img_5.png'),
-                backgroundColor: white,
+                backgroundColor: AppColor.white,
                 child: Image.asset(
                  widget.image,
                   height: 40,
@@ -48,7 +48,7 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
               Container(
                 height: 30,
                 decoration: BoxDecoration(
-                    color: greenDark, borderRadius: BorderRadius.circular(10)),
+                    color: AppColor.greenDark, borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +60,7 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
-                            color: white),
+                            color: AppColor.white),
                       ),
                     ),
                     Container(
@@ -69,10 +69,10 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
                       child: Center(
                           child: Icon(
                         Icons.navigate_next,
-                        color: greenDark,
+                        color: AppColor.greenDark,
                       )),
                       decoration: BoxDecoration(
-                          color: white, borderRadius: BorderRadius.circular(5)),
+                          color: AppColor.white, borderRadius: BorderRadius.circular(5)),
                     ),
                   ],
                 ),

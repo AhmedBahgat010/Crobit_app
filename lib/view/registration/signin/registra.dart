@@ -66,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(),
-              backgroundColor: white,
+              backgroundColor: AppColor.white,
               body: ListView(
                 children: [
                   Form(
@@ -177,8 +177,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               ConditionalBuilder(
                                 condition: state is! RegisterLoadingtState,
-                                builder: (context) => ButtonSign(
+                                builder: (context) => ButtonSign (
                                   text: 'Sign up',
+
                                   ontap: () {
                                     // print(emailController?.text);
 

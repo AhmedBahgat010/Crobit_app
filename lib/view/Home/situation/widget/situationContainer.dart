@@ -39,7 +39,7 @@ class SituationContainer extends StatelessWidget {
               ),
               Spacer(),
               Center(
-                  child: Icon(Icons.navigate_next, color: greenDark, size: 40)),
+                  child: Icon(Icons.navigate_next, color: AppColor.greenDark, size: 40)),
             ],
           ),
         ));

@@ -14,51 +14,46 @@ class WeatherContainer extends StatefulWidget {
 class _WeatherContainerState extends State<WeatherContainer> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Stack(children: [
         Container(
           height: 200,
-
           child: Stack(
-           // alignment: Alignment.topLeft,
+            // alignment: Alignment.topLeft,
             children: [
               Stack(
                 children: [
                   Container(
-
-
                     child: Image.asset(
-                    'assets/images/img_3.png',
+                      'assets/images/img_3.png',
                       fit: BoxFit.cover,
-                  ),),
+                    ),
+                  ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.only(bottom: 20,left: 20,right: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: [
                         Text("32°",
                             style: GoogleFonts.cairo(
                                 textStyle: TextStyle(
-                                  color: white,
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.w700,
-                                ))),
+                              color: AppColor.white,
+                              fontSize: 50,
+                              fontWeight: FontWeight.w700,
+                            ))),
                         Text("H:32°   L:27°", style: hintStylegreen),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(" Egypt, Mansora", style: mediumStylewhite),
-                            Text("Cloudy", style: mediumStylewhite),
-                          ],
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(" Egypt, Mansora", style: mediumStylewhite),
+                              Text("Cloudy", style: mediumStylewhite),
+                            ],
+                          ),
                         )
                       ],
                     ),

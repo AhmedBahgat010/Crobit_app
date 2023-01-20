@@ -10,7 +10,7 @@ class NotificationsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return             Container(
         margin: const EdgeInsets.only(top: 2, bottom: 4),
-        color: colorNotifications,
+        color: AppColor.colorNotifications,
         height: 80,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -20,7 +20,7 @@ class NotificationsContainer extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                backgroundColor: black,
+                backgroundColor: AppColor.black,
                 radius: 5,
               ),
               SizedBox(
@@ -42,7 +42,7 @@ class NotificationsContainer extends StatelessWidget {
               ),
               Spacer(),
               CircleAvatar(
-                backgroundColor: greenDark,
+                backgroundColor: AppColor.greenDark,
                 radius: 7,
               ),
             ],

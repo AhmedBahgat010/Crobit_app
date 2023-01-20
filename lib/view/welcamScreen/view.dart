@@ -118,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         controller: boardController,
                         count: boarding.length,
                         effect: ExpandingDotsEffect (
-                          activeDotColor: greenDark,  //HexColor('2BD596'),
+                          activeDotColor: AppColor.greenDark,  //HexColor('2BD596'),
                           dotWidth: 30,
                           dotHeight: 12,
                         ),
@@ -176,7 +176,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         textAlign: TextAlign.center,
         style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,color: gray
+            fontSize: 16.0,color: AppColor.gray
         ),),
       SizedBox(height: 14.0,),
     ],

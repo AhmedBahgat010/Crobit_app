@@ -5,23 +5,23 @@ import 'package:flutter/services.dart';
 import 'my_colors.dart';
 
 ThemeData lightTheme = ThemeData(
-  scaffoldBackgroundColor: white,
+  scaffoldBackgroundColor: AppColor.white,
   platform: TargetPlatform.iOS,
-  primaryColor: greenDark,
+  primaryColor: AppColor.greenDark,
   primarySwatch: Colors.green,
   appBarTheme: const AppBarTheme(
-      backgroundColor: white,
+      backgroundColor: AppColor.white,
       toolbarHeight: 50,
       elevation: 0,
 
       centerTitle: true,
-      iconTheme: IconThemeData(color: greenDark),
+      iconTheme: IconThemeData(color: AppColor.greenDark),
       titleTextStyle: TextStyle(
-        color: greenDark,
+        color: AppColor.greenDark,
         fontSize: 32,
         fontWeight: FontWeight.w500,
      ),
       systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: greenDark,
+          statusBarColor: AppColor.greenDark,
           statusBarIconBrightness: Brightness.light)),
 );

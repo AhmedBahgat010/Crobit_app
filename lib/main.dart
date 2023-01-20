@@ -1,4 +1,6 @@
 import 'package:app_final/core/style/theme.dart';
+import 'package:app_final/view/Diagnose/DiagnoseScreen.dart';
+import 'package:app_final/view/Diagnose/details.dart';
 import 'package:app_final/view/Home/HomeLayout.dart';
 import 'package:app_final/view/Home/cubit/cubit.dart';
 import 'package:app_final/view/registration/Login/login.dart';
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
-        home: HomeLayout(),
+        home: DetailsScreen(),
       ),
     );
   }

@@ -68,18 +68,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     key:        LoginCubit.get(context)?.formKey,
                     child: Stack(
                       children: [
-                        Positioned(
-                            top: -250,
-                            right: -250,
-                            child: Transform(
-                                alignment: FractionalOffset.center,
-                                transform: Matrix4.rotationZ(
-                                  3.1415926535897932 / 1,
-                                ),
-                                child: Image.asset(
-                                  'assets/images/Pngtre.png',
-                                  height: 450,
-                                ))),
+                        // Positioned(
+                        //     top: -250,
+                        //     right: -250,
+                        //     child: Transform(
+                        //         alignment: FractionalOffset.center,
+                        //         transform: Matrix4.rotationZ(
+                        //           3.1415926535897932 / 1,
+                        //         ),
+                        //         child: Image.asset(
+                        //           'assets/images/Pngtre.png',
+                        //           height: 450,
+                        //         ))),
                         SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Expanded(
                                       child: Container(
                                         height: 2.0,
-                                        color: lightGray,
+                                        color: AppColor.lightGray,
                                       ),
                                     ),
                                     Container(
@@ -166,12 +166,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                           horizontal: 3.0),
                                       child: const Text("  or sign in with  ",
                                           style: TextStyle(
-                                              color: lightGray, fontSize: 19)),
+                                              color: AppColor.lightGray, fontSize: 19)),
                                     ),
                                     Expanded(
                                       child: Container(
                                         height: 2.0,
-                                        color: lightGray,
+                                        color: AppColor.lightGray,
                                       ),
                                     ),
                                   ],

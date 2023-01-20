@@ -38,31 +38,31 @@ class _profileScreenState extends State<profileScreen> {
                 ContainerSetting(
                   icon: Icons.person,
                   titel: "Edit Profile",
-                  color: greenDark,
+                  color: AppColor.greenDark,
                   onTap: () {},
                 ),
                 ContainerSetting(
                   icon: Icons.location_on,
                   titel: " My Farm",
-                  color: greenDark,
+                  color: AppColor.greenDark,
                   onTap: () {},
                 ),
                 ContainerSetting(
                   icon: Icons.help_outline,
                   titel: "Help & Support",
-                  color: greenDark,
+                  color: AppColor.greenDark,
                   onTap: () {},
                 ),
                 ContainerSetting(
                   icon: Icons.settings,
                   titel: "Setting",
-                  color: greenDark,
+                  color: AppColor.greenDark,
                   onTap: () {},
                 ),
                 ContainerSetting(
                   icon: Icons.star_rate,
                   titel: "Rate Us",
-                  color: greenDark,
+                  color: AppColor.greenDark,
                   onTap: () {},
                 ),
                 ContainerSetting(

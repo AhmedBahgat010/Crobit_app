@@ -31,7 +31,7 @@ class ContainerSetting extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Icon(Icons.navigate_next, color: black, size: 40),              ],
+            Icon(Icons.navigate_next, color: AppColor.black, size: 40),              ],
         ),
       ),
     )

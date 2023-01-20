@@ -37,26 +37,26 @@ class _HomeLayoutState extends State<HomeLayout> {
                 /// Home
                 SalomonBottomBarItem(
 
-                  icon: Icon(Icons.home,color:greenDark,size: 30),
+                  icon: Icon(Icons.home,color:AppColor.greenDark,size: 30),
                   title: Text("Home"),
                 ),
 
                 /// Likes
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.monitor_heart_outlined,color:greenDark,size: 30),
-                  title: Text("Likes"),
+                  icon: Icon(Icons.chat_outlined,color:AppColor.greenDark,size: 30),
+                  title: Text("Consultant"),
                 ),
 
                 /// Search
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.location_on_outlined,color:greenDark,size: 30 ),
+                  icon: Icon(Icons.location_on_outlined,color:AppColor.greenDark,size: 30 ),
                   title: Text("location"),
                 ),
 
                 /// Profile
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.person_outline_outlined,color:greenDark,size: 30),
-                  title: Text("Profile"),
+                  icon: Icon(Icons.notifications_outlined,color:AppColor.greenDark,size: 30),
+                  title: Text("Notification"),
                 ),
               ],
             ),
