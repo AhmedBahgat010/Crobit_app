@@ -6,12 +6,13 @@ class RegisterInitialStates extends RegisterStates{}
 class RegisterLoadingtState extends RegisterStates{}
 class RegisterSuccessState extends RegisterStates{
 
-  late final LoginModel loginModel;
-  RegisterSuccessState(this.loginModel);
+
 }
 class RegisterErrorState extends RegisterStates{
-  final String? message;
+  // final String? message;
+  //
+  // RegisterErrorState({required this.message}
 
-  RegisterErrorState({required this.message});
+      // );
 
 }

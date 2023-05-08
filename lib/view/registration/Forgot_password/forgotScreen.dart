@@ -1,4 +1,6 @@
 import 'package:app_final/core/components/DefaultFormField.dart';
+import 'package:app_final/core/resource/navigator.dart';
+import 'package:app_final/view/registration/Forgot_password/code.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +25,10 @@ class _ForgotScreenState extends State<ForgotScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/images/password.png', height: 200),
+              Center(child: Image.asset('assets/images/password.png', height: 200)),
               const SizedBox(height: 10),
               Text(
                 'Forgot your password?',
@@ -34,7 +38,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
               Text(
                 'Enter your registered email below to receive password reset instruction',
                 style: hintStyle,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
               ),
               const SizedBox(
                 height: 30,
@@ -51,10 +55,12 @@ class _ForgotScreenState extends State<ForgotScreen> {
 
               ConditionalBuilder(
                 condition: true,
-                builder: (context) => ButtonSign(
-                  text: 'Sent',
-                  ontap: () {
+                builder: (context) =>
 
+                    ButtonSign(
+                  text: 'Sent Link',
+                  ontap: () {
+                    navigateTo(context, PinCodeVerificationScreen("+201013236609"));
                     // print(emailController?.text);
 
 

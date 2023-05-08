@@ -40,27 +40,31 @@ class _DefaultFormFieldState extends State<DefaultFormField> {
         controller: widget.controller,
         validator: widget.validator,
         onFieldSubmitted: widget.onFieldSubmitted,
-        style: const TextStyle(color:AppColor.greenDark, fontSize: 18,height: 1.5),
+        style: const TextStyle(color:AppColor.gray, fontSize: 20,height: 1.5),
         keyboardType:widget.keyboardType,
         decoration: InputDecoration(
+
           suffixIcon: widget.isPassword
               ? IconButton(
               splashRadius: 20,
               icon: Icon(
                   _isObscure ? Icons.visibility : Icons.visibility_off,
-                  color:AppColor.greenDark),
+                  color:AppColor.gray),
               onPressed: () => setState(() => _isObscure = !_isObscure))
               : null,
           filled: true,
+
           prefixIcon: widget.prefixIcon!=null? Icon(widget.prefixIcon):null,
           contentPadding:
           const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           fillColor:AppColor.white,
           hintText: widget.hintText,
           labelText: widget.labelText,
-          labelStyle: const TextStyle(color: AppColor.gray, fontSize: 18),
-          hintStyle: const TextStyle(color: AppColor.gray, fontSize: 18),
-                 border: OutlineInputBorder(),
+          labelStyle: const TextStyle(color: AppColor.gray, fontSize: 22),
+
+          hintStyle: const TextStyle(color: AppColor.gray, fontSize: 20),
+
+          // border: OutlineInputBorder(),
 
       ),
       ),

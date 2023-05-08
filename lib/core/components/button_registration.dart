@@ -23,7 +23,7 @@ class _ButtonSignState extends State<ButtonSign> {
         },
         child: Container(
             height: 50,
-            width:widget.width ??MediaQuery.of(context).size.width / 1.4,
+            width:widget.width ??MediaQuery.of(context).size.width / 1.3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: AppColor.greenDark,

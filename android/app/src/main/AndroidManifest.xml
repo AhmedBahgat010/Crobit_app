@@ -1,13 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app_final">
-   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission  android:name="android.permission.INTERNET"/>
+    <uses-permission  android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission  android:name="android.permission.ACCESS_FINE_LOCATION" />
    <application
         android:label="Crobit"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-       <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyDD9p3ZWLtHjFG7yzgA7i5_Yc0pFaPkghk"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,5 +33,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data  android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDJmyY_Cf92yyv0UKjHmp3iV-p_4cq4s2g"/>
+       <meta-data  android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" />
     </application>
 </manifest>

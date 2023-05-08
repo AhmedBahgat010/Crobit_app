@@ -8,7 +8,7 @@ class ContainerFeatures extends StatefulWidget {
   final String image;
   final String title;
   final String buttontitle;
-  final Function ontap;
+  final Function()? ontap;
 
   const ContainerFeatures({Key? key, required this.image, required this.title, required this.buttontitle, required this.ontap}) : super(key: key);
 
@@ -20,9 +20,9 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        widget.ontap();
-      },child: Container(
+      onTap:
+        widget.ontap
+     ,child: Container(
         width: 175,
         height: 180,
         decoration:
@@ -43,10 +43,11 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
               ),
               Text(
                 widget.title,
-                style: labelStyle,
+                style: labelStyle.apply(fontSizeDelta: -8),
               ),
               Container(
                 height: 30,
+                padding: EdgeInsets.only(left: 5,right: 9),
                 decoration: BoxDecoration(
                     color: AppColor.greenDark, borderRadius: BorderRadius.circular(10)),
                 child: Row(
@@ -55,15 +56,11 @@ class _ContainerFeaturesState extends State<ContainerFeatures> {
                   children: [
                     Text(
                       widget.buttontitle,
-                      style: GoogleFonts.cairo(
-                        textStyle: const TextStyle(
-                            fontSize: 19,
-                            fontWeight: FontWeight.w600,
-                            height: 1.5,
-                            color: AppColor.white),
-                      ),
+                      style: labelStyle2.apply(fontSizeDelta: -15,color: AppColor.white),
                     ),
+                    Spacer(),
                     Container(
+
                       height: 20,
                       width: 30,
                       child: Center(

@@ -1,27 +1,31 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/style/my_colors.dart';
 import '../../../../core/style/my_style.dart';
+
 class NotificationsContainer extends StatelessWidget {
-  const NotificationsContainer({Key? key}) : super(key: key);
+  const NotificationsContainer(
+      {Key? key, required this.title, required this.image, required this.body})
+      : super(key: key);
+  final String title;
+  final String image;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
-    return             Container(
-        margin: const EdgeInsets.only(top: 2, bottom: 4),
-        color: AppColor.colorNotifications,
-        height: 80,
+    return Container(
+        height: 90,
         width: MediaQuery.of(context).size.width,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             // mainAxisAlignment: MainAxisAlignment.end,
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
                 backgroundColor: AppColor.black,
-                radius: 5,
+                radius: 30,
+                backgroundImage: NetworkImage(image),
               ),
               SizedBox(
                 width: 10,
@@ -30,24 +34,30 @@ class NotificationsContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "There is an insect in your crop.",
-                    style: mediumStyle,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .4,
+                    child: Text(
+                      title,
+                      style: mediumStyle,
+                    ),
                   ),
-                  Text(
-                    "2 hours ago",
-                    style: hintStyle2,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .4,
+                    child: Text(
+                      body,
+                      maxLines: 2,
+                      style: hintStyle2,
+                    ),
                   ),
                 ],
               ),
               Spacer(),
-              CircleAvatar(
-                backgroundColor: AppColor.greenDark,
-                radius: 7,
+              Text(
+                "10 Hrs ago.. ",
+                style: hintStyle2,
               ),
             ],
           ),
-        ))
-    ;
+        ));
   }
 }

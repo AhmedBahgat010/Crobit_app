@@ -10,7 +10,7 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialStates());
 
   static LoginCubit? get(context) => BlocProvider.of(context);
-  late LoginModel loginModel;
+  late UserModel loginModel;
   final formKey = GlobalKey<FormState>();
 
   void userLogin({
@@ -22,12 +22,11 @@ class LoginCubit extends Cubit<LoginStates> {
     }
     emit(LoginLoadingtState());
     formKey.currentState!.save();
-    DioHelper.postData(url:LOGIN, data: {
+    DioHelper.postdata(url:LOGIN, posteddata: {
       "email": email,
       "password": password,
     }).then((value) {
-      loginModel = LoginModel.fromJson(value.data);
-
+      loginModel = UserModel.fromJson(value.data);
       emit(LoginSuccessState(loginModel));
       print("00000000000000000000000000000000000");
     }).catchError((error) {

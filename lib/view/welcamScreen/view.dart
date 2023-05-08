@@ -2,7 +2,6 @@ import 'package:app_final/core/resource/navigator.dart';
 import 'package:app_final/core/style/my_colors.dart';
 import 'package:flutter/material.dart';
 
-// import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../network/data_resources/local/shared_preferences.dart';
