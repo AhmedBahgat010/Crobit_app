@@ -5,6 +5,7 @@ import '../../../../core/resource/app_strings.dart';
 import '../../../../network/models/user_model.dart';
 import 'States.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialStates());
@@ -31,7 +32,8 @@ class LoginCubit extends Cubit<LoginStates> {
       print("00000000000000000000000000000000000");
     }).catchError((error) {
       emit(LoginErrorState(message: error.toString()));
-      print(error.toString());
+      print(error);
+
       print("11111111111111111111111111111");
     });
   }

@@ -1,7 +1,11 @@
 import 'package:app_final/core/style/theme.dart';
+import 'package:app_final/s.dart';
 import 'package:app_final/view/Home/Home/cubit/cubit.dart';
 import 'package:app_final/view/Home/HomeLayout.dart';
+import 'package:app_final/view/Profile/cubit/profil_cubit.dart';
+import 'package:app_final/view/Soil%20Status/cubit/cubit.dart';
 import 'package:app_final/view/registration/Login/login.dart';
+import 'package:app_final/view/welcamScreen/view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +33,16 @@ void main() async {
   await CacheHelper.init();
   final Widget startWidget;
   token = CacheHelper.getData(key: 'token');
-
-  if (token != null) {
+  OnBoarding = CacheHelper.getData(key: 'OnBoarding');
+  location = CacheHelper.getData(key: 'location');
+  // print(location+ "ddd");
+  if (OnBoarding != null) {
     if (token != null)
       startWidget = HomeLayout();
     else
       startWidget = LoginScreen();
   } else {
-    startWidget = const LoginScreen();
+    startWidget = OnBoardingScreen();
   }
 
   await flutterLocalNotificationsPlugin
@@ -69,12 +75,18 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (BuildContext context) => HomeCubit()
-              ..notification(
-                  channel, context, flutterLocalNotificationsPlugin)..PostFcmToken()),
+              ..notification(channel, context, flutterLocalNotificationsPlugin)
+              ..PostFcmToken()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                SoilStatusCubit()..getHasSoilStatus()),
+        BlocProvider(
+            create: (BuildContext context) => ProfilCubit()..getProfil())
       ],
       child: MaterialApp(
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
+        // home:HomePage(),
         home: startwidget,
       ),
     );

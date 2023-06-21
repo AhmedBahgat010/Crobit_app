@@ -7,6 +7,7 @@ import 'package:app_final/view/registration/Forgot_password/forgotScreen.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../core/components/button_registration.dart';
 import '../../../core/style/my_colors.dart';
 import '../../../core/components/DefaultFormField.dart';
@@ -56,30 +57,25 @@ class _LoginScreenState extends State<LoginScreen> {
               print(state);
               print("Ddddddddddddd");
               CacheHelper.saveData(
-                  key: 'token', value: state.loginModel.token)
+                  key: 'token', value: state.loginModel.data!.token)
                   .then((value) {
                 navigateAndFinished(context, const HomeLayout());
               });
-              // if (state.loginModel.status) {
-              //
-              //   // Fluttertoast.showToast(
-              //   //     msg: state.loginModel.message,
-              //   //     toastLength: Toast.LENGTH_SHORT,
-              //   //     gravity: ToastGravity.CENTER,
-              //   //     timeInSecForIosWeb: 5,
-              //   //     backgroundColor: Colors.green,
-              //   //     textColor: Colors.white,
-              //   //     fontSize: 16.0);
-              // } else {
-              //   // Fluttertoast.showToast(
-              //   //     msg: state.loginModel.message,
-              //   //     toastLength: Toast.LENGTH_SHORT,
-              //   //     gravity: ToastGravity.CENTER,
-              //   //     timeInSecForIosWeb: 5,
-              //   //     backgroundColor: Colors.red,
-              //   //     textColor: Colors.white,
-              //   //     fontSize: 16.0);
-              // }
+
+            }
+            if (state is LoginErrorState) {
+              print(state);
+              print("${ state.message.toString()}""Ddddddddddddd");
+              Fluttertoast.showToast(
+                  msg: state.message.toString(),
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0
+              );
+
             }
           },
           builder: (context, state) {

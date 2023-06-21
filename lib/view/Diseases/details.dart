@@ -1,12 +1,13 @@
 import 'package:app_final/core/style/my_colors.dart';
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/style/my_style.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({Key? key, required this.photo, required this.sugestedTreatment, required this.description, required this.name}) : super(key: key);
+  const DetailsScreen(
+      {Key? key, required this.photo, required this.sugestedTreatment, required this.description, required this.name})
+      : super(key: key);
   final String photo;
   final String sugestedTreatment;
   final String description;
@@ -35,7 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    widget.name,                      style: labelStyle2.apply(fontSizeDelta: 10),
+                    widget.name, style: labelStyle2.apply(fontSizeDelta: 10),
                   ),
                   CarouselSlider(
                       items: [
@@ -56,8 +57,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         scrollDirection: Axis.horizontal,
                       )),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -69,7 +76,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             labelColor: AppColor.greenDark,
                             unselectedLabelColor: AppColor.gray,
                             labelStyle:
-                                mediumStylewhite.apply(fontWeightDelta: 15),
+                            mediumStylewhite.apply(fontWeightDelta: 15),
                             isScrollable: true,
                             tabs: <Widget>[
                               Tab(
@@ -89,16 +96,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: TabBarView(
                               children: [
                                 Text(
-                            widget.description,                                  style:
-                                      hintStyle2.apply(color: AppColor.black),
+                                  widget.description, style:
+                                hintStyle2.apply(color: AppColor.black),
                                 ),
                                 Text(
-                                  widget.sugestedTreatment,                                    style:
-                                      hintStyle2.apply(color: AppColor.black),
+                                  widget.sugestedTreatment, style:
+                                hintStyle2.apply(color: AppColor.black),
                                 ),
                                 Text(
-                                  widget.description,                                    style:
-                                      hintStyle2.apply(color: AppColor.black),
+                                  widget.description, style:
+                                hintStyle2.apply(color: AppColor.black),
                                 ),
                               ],
                             ),

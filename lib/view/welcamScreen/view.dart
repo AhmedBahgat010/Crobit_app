@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../core/resource/constats.dart';
 import '../../network/data_resources/local/shared_preferences.dart';
 import '../registration/Login/login.dart';
 
@@ -45,8 +46,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   void finishOnBoarding()
   {
-    CacheHelper.saveData(key: 'token', value: true).then((value) {
+    CacheHelper.saveData(key: 'OnBoarding', value: true).then((value) {
       navigateAndFinished(context, LoginScreen());
+
     }
     );
   }

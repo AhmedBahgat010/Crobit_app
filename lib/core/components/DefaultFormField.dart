@@ -10,6 +10,7 @@ class DefaultFormField extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
   final TextInputType? keyboardType;
   final IconData? prefixIcon;
+  final Color? fillcolor;
   const DefaultFormField(
       {Key? key,
         this.labelText,
@@ -19,7 +20,7 @@ class DefaultFormField extends StatefulWidget {
         this.onFieldSubmitted,
         this.isPassword = false,
         this.keyboardType,
-        this.prefixIcon,
+        this.prefixIcon, this.fillcolor,
       })
       : super(key: key);
 
@@ -35,6 +36,7 @@ class _DefaultFormFieldState extends State<DefaultFormField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
+
         obscureText: widget.isPassword ? _isObscure : false,
         cursorColor: AppColor.greenDark,
         controller: widget.controller,
@@ -57,13 +59,28 @@ class _DefaultFormFieldState extends State<DefaultFormField> {
           prefixIcon: widget.prefixIcon!=null? Icon(widget.prefixIcon):null,
           contentPadding:
           const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          fillColor:AppColor.white,
+          fillColor:widget.fillcolor != null?widget.fillcolor:AppColor.white,
           hintText: widget.hintText,
           labelText: widget.labelText,
           labelStyle: const TextStyle(color: AppColor.gray, fontSize: 22),
 
           hintStyle: const TextStyle(color: AppColor.gray, fontSize: 20),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColor.greenDark),
+            //  when the TextFormField in focused
+          ) ,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColor.gray),
 
+          ),
+          disabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColor.greenDark),
+
+          ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColor.greenDark),
+
+          ),
           // border: OutlineInputBorder(),
 
       ),
@@ -71,3 +88,5 @@ class _DefaultFormFieldState extends State<DefaultFormField> {
     );
   }
 }
+
+

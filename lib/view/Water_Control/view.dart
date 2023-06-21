@@ -40,7 +40,8 @@ class _WaterControlState extends State<WaterControl> {
                 borderColor: Colors.grey[300],
                 borderWidth: 5.0,
                 direction: Axis.vertical,
-                // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal =
+                // left to right). Defaults to Axis.vertical.
                 center: Text(
                   "50%",
                   style:

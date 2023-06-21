@@ -1,17 +1,18 @@
-
 import 'package:app_final/core/resource/navigator.dart';
 import 'package:app_final/core/style/my_colors.dart';
 import 'package:app_final/core/style/my_style.dart';
 import 'package:app_final/network/models/DiseasesModel.dart';
+import 'package:app_final/view/Diseases/cubit/States.dart';
+import 'package:app_final/view/Diseases/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
-import '../Home/Home/cubit/States.dart';
-import '../Home/Home/cubit/cubit.dart';
 import 'details.dart';
 
 class DiseasesScreen extends StatefulWidget {
-  const DiseasesScreen({Key? key}) : super(key: key);
+  const DiseasesScreen({Key? key, required this.Diseases}) : super(key: key);
+  final String Diseases;
 
   @override
   State<DiseasesScreen> createState() => _DiseasesScreenState();
@@ -21,8 +22,8 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getHasDiseases(),
-      child: BlocConsumer<HomeCubit, HomeStates>(
+      create: (context) => DiseasesCubit()..getHasDiseases(widget.Diseases),
+      child: BlocConsumer<DiseasesCubit, DiseasesStates>(
         listener: (context, state) {
           print(state);
 
@@ -30,7 +31,7 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
         },
         builder: (context, state) {
           List<HasDiseasesModel> diseasesModel =
-              HomeCubit.get(context)!.diseasesModel;
+              DiseasesCubit.get(context)!.diseasesModel;
 
           return Scaffold(
             appBar: AppBar(
@@ -60,59 +61,44 @@ class _DiseasesScreenState extends State<DiseasesScreen> {
                               shrinkWrap: true,
                               itemCount: diseasesModel.length,
                               itemBuilder: (context, index) {
-                                return BlocProvider(
-                                  create: (context) => HomeCubit()
-                                    ..getPhotoDiseases(
-                                        diseasesModel[index].photoId)
-                                    ..getDescriptionDiseases(
-                                        diseasesModel[index].diseasesID),
-                                  child: BlocBuilder<HomeCubit, HomeStates>(
-                                    builder: (context, state) {
-                                      PhotoDiseasesModel? photoDiseasesModel =
-                                          HomeCubit.get(context)!
-                                              .photoDiseasesModel;
-                                      DescriptionDiseasesModel?
-                                          descriptionDiseasesModel =
-                                          HomeCubit.get(context)!
-                                              .descriptionDiseasesModel;
+                                return DiseasesContainer(context,
+                                    title: diseasesModel[index]
+                                        .diseases!
+                                        .name
+                                        .toString(),
+                                    image: diseasesModel[index].photo!.photo ==
+                                            null
+                                        ? "https://images.pexels.com/photos/2033343/pexels-photo-2033343.jpeg?dpr=1"
+                                        : diseasesModel[index]
+                                            .photo!
+                                            .photo
+                                            .toString(),
+                                    data: "${diseasesModel[index].photo!.date}"
+                                        ,
 
-                                      return photoDiseasesModel == null ||
-                                              descriptionDiseasesModel == null
-                                          ? SizedBox()
-                                          : DiseasesContainer(context,
-                                              title: descriptionDiseasesModel
-                                                  .name
-                                                  .toString(),
-                                              image: photoDiseasesModel == null
-                                                  ? "https://images.pexels.com/photos/2033343/pexels-photo-2033343.jpeg?dpr=1"
-                                                  : photoDiseasesModel.photo
-                                                      .toString(),
-                                              data: diseasesModel[index]
-                                                  .date
-                                                  .toString(), ontap: () {
-                                              navigateTo(
-                                                  context,
-                                                  DetailsScreen(
-                                                    photo: photoDiseasesModel
-                                                        .photo
-                                                        .toString(),
-                                                    sugestedTreatment:
-                                                        descriptionDiseasesModel
-                                                            .description
-                                                            .toString(),
-                                                    description:
-                                                        descriptionDiseasesModel
-                                                            .sugestedTreatment
-                                                            .toString(),
-                                                    name:
-                                                        descriptionDiseasesModel
-                                                            .name
-                                                            .toString(),
-                                                  ));
-                                            });
-                                    },
-                                  ),
-                                );
+                                    ontap: () {
+
+                                  navigateTo(
+                                      context,
+                                      DetailsScreen(
+                                        photo: diseasesModel[index]
+                                            .photo!
+                                            .photo
+                                            .toString(),
+                                        sugestedTreatment: diseasesModel[index]
+                                            .diseases!
+                                            .description
+                                            .toString(),
+                                        description: diseasesModel[index]
+                                            .diseases!
+                                            .sugestedTreatment
+                                            .toString(),
+                                        name: diseasesModel[index]
+                                            .diseases!
+                                            .name
+                                            .toString(),
+                                      ));
+                                });
                               },
                             )
                           ]),
@@ -132,6 +118,7 @@ Widget DiseasesContainer(
   required String data,
   required Function()? ontap,
 }) {
+  // String formattedDate = DateFormat('yyyy-MM-dd').format(data as DateTime );
   return Container(
     height: 140,
     margin: const EdgeInsets.symmetric(vertical: 7),
@@ -159,9 +146,12 @@ Widget DiseasesContainer(
               title,
               style: grayText.apply(color: AppColor.greenDark),
             ),
-            Text(
-              data,
-              style: hintStyle2,
+            SizedBox(
+              width: 150,
+              child: Text(
+                data,
+                style: hintStyle2,
+              ),
             ),
             InkWell(
               onTap: ontap,

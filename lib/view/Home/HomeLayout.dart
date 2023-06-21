@@ -22,9 +22,10 @@ class _HomeLayoutState extends State<HomeLayout> {
     super.initState();
     // initialization();
   }
+
   @override
   Widget build(BuildContext context) {
-    print(token );
+    print(token);
     return BlocConsumer<HomeCubit, HomeStates>(
       listener: (context, state) {
         // TODO: implement listener
@@ -33,37 +34,38 @@ class _HomeLayoutState extends State<HomeLayout> {
         var cubit = HomeCubit.get(context);
         return SafeArea(
           child: Scaffold(
-            //BottomBarDoubleBullet
-            //BottomBarLabelSlide
             bottomNavigationBar: SalomonBottomBar(
-              currentIndex:cubit!.currentIndex,
+              currentIndex: cubit!.currentIndex,
               onTap: (i) => setState(() {
                 cubit.changeScreen(i);
               }),
               items: [
                 SalomonBottomBarItem(
-
-                  icon: Icon(Icons.home,color:AppColor.greenDark,size: 30),
+                  icon: Icon(Icons.home, color: AppColor.greenDark, size: 30),
                   title: Text("Home"),
                 ),
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.location_on_outlined,color:AppColor.greenDark,size: 30 ),
+                  icon: Icon(Icons.location_on_outlined,
+                      color: AppColor.greenDark, size: 30),
                   title: Text("location"),
                 ),
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.chat_outlined,color:AppColor.greenDark,size: 30),
+                  icon: Icon(Icons.chat_outlined,
+                      color: AppColor.greenDark, size: 30),
                   title: Text("Consultant"),
                 ),
-
-
-
                 SalomonBottomBarItem(
-                  icon: Icon(Icons.notifications_outlined,color:AppColor.greenDark,size: 30),
+                  icon: Icon(Icons.notifications_outlined,
+                      color: AppColor.greenDark, size: 30),
                   title: Text("Notification"),
+                ),
+                SalomonBottomBarItem(
+                  icon: Icon(Icons.person,
+                      color: AppColor.greenDark, size: 30),
+                  title: Text("profil"),
                 ),
               ],
             ),
-
             body: cubit.HomeScreens[cubit.currentIndex],
           ),
         );

@@ -1,6 +1,7 @@
 import 'package:location/location.dart';
 
 class LocationService {
+
   Future<LocationData> getLocation() async {
     Location location = Location();
     bool serviceEnabled;
@@ -24,6 +25,7 @@ class LocationService {
     }
 
     locationData = await location.getLocation();
+    print(locationData.latitude);
     return locationData;
   }
 }

@@ -3,6 +3,7 @@ import 'package:app_final/network/models/user_model.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../core/components/button_registration.dart';
 import '../../../../core/style/my_colors.dart';
 import '../../../../core/components/DefaultFormField.dart';
@@ -40,33 +41,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
           UserModel userModel= RegisterCubit.get(context)!.RegisterModel;
             if (state is RegisterSuccessState) {
               CacheHelper.saveData(
-                  key: 'token', value: userModel.token)
+                  key: 'token', value: userModel.data?.token)
                   .then((value) {
-                print("userModel.token");
-                print("${userModel.token} "+ "ddddddddddddddddddddddddd");
-                print("${userModel.email} "+ "ddddddddddddddddddddddddd");
+                print("${userModel.data?.token} "+ "ddddddddddddddddddddddddd");
+                print("${userModel.data?.email} "+ "ddddddddddddddddddddddddd");
                 navigateAndFinished(context, const HomeLayout());
               });
-              // if (state.loginModel.status) {
+              if (state is RegisterErrorState) {
+                print(state);
+                print("${ state.toString()}""Ddddddddddddd");
+                Fluttertoast.showToast(
+                    msg: state.toString(),
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0
+                );
 
-                // Fluttertoast.showToast(
-                //     msg: state.loginModel.message,
-                //     toastLength: Toast.LENGTH_SHORT,
-                //     gravity: ToastGravity.CENTER,
-                //     timeInSecForIosWeb: 5,
-                //     backgroundColor: Colors.green,
-                //     textColor: Colors.white,
-                //     fontSize: 16.0);
-              // } else {
-                // Fluttertoast.showToast(
-                //     msg: state.loginModel.message,
-                //     toastLength: Toast.LENGTH_SHORT,
-                //     gravity: ToastGravity.CENTER,
-                //     timeInSecForIosWeb: 5,
-                //     backgroundColor: Colors.red,
-                //     textColor: Colors.white,
-                //     fontSize: 16.0);
-              // }
+              }
             }
           },
           builder: (context, state) {

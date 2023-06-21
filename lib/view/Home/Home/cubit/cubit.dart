@@ -1,7 +1,7 @@
 import 'package:app_final/core/resource/app_strings.dart';
 import 'package:app_final/core/resource/constats.dart';
 import 'package:app_final/network/data_resources/remote/dio.dart';
-import 'package:app_final/view/Home/Home/weatherScreen.dart';
+import 'package:app_final/view/Home/Home/HomeScreen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -25,7 +25,7 @@ class HomeCubit extends Cubit<HomeStates> {
     HomeScreen(),
     MapScreen(),
     ConsultantChat(),
-
+    NotificationScreen(),
     NotificationScreen(),
   ];
 
@@ -34,67 +34,7 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeNavigationBarStates());
   }
 
-  List<HasDiseasesModel> diseasesModel = [];
 
-  getHasDiseases() {
-    emit(DiseasesLoadingtState());
-    DioHelper.getdata(
-      url: HasDiseases,
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': "Bearer ${token}",
-      },
-    ).then((value) {
-      (value.data as List).map((e) {
-        diseasesModel.add(HasDiseasesModel.fromJson(e));
-        print(e["photoId"]);
-      }).toList();
-      emit(DiseasesSuccessState());
-    }).catchError((error) {
-      print(error);
-      emit(DiseasesErrorState());
-    });
-  }
-
-  PhotoDiseasesModel? photoDiseasesModel;
-
-  DescriptionDiseasesModel? descriptionDiseasesModel;
-
-  getPhotoDiseases(id) {
-    emit(GetPhotoDiseasesLoadingtState());
-    DioHelper.getdata(
-      url: PhotoDiseases + "${id}",
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': "Bearer ${token}",
-      },
-    ).then((value) {
-      photoDiseasesModel = PhotoDiseasesModel.fromJson(value.data);
-
-      emit(GetPhotoDiseasesSuccessState());
-    }).catchError((error) {
-      print(error);
-      emit(GetPhotoDiseasesErrorState());
-    });
-  }
-
-  getDescriptionDiseases(id) {
-    emit(GetDescriptionDiseasesLoadingtState());
-    DioHelper.getdata(
-      url: DescriptionDiseases + "${id}",
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': "Bearer ${token}",
-      },
-    ).then((value) {
-      descriptionDiseasesModel = DescriptionDiseasesModel.fromJson(value.data);
-
-      emit(GetDescriptionDiseasesSuccessState());
-    }).catchError((error) {
-      print(error);
-      emit(GetDescriptionDiseasesErrorState());
-    });
-  }
 
   notification(AndroidNotificationChannel channel, context,
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) {

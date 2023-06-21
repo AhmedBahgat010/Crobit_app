@@ -1,9 +1,13 @@
 import 'package:app_final/core/style/my_style.dart';
+import 'package:app_final/view/Soil%20Status/cubit/States.dart';
+import 'package:app_final/view/Soil%20Status/cubit/cubit.dart';
 import 'package:app_final/view/Soil%20Status/widget/Basic_Rates.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import '../../core/style/my_colors.dart';
+import '../../network/models/SoilStatusModel.dart';
 
 class SoilStatus extends StatefulWidget {
   const SoilStatus({Key? key}) : super(key: key);
@@ -20,13 +24,23 @@ class _SoilStatusState extends State<SoilStatus> {
 
   @override
   Widget build(BuildContext context) {
+
     final List<ChartData> chartData = <ChartData>[
-      ChartData('w1', 128, 129, 90),
-      ChartData('w2', 123, 100, 93),
-      ChartData('w3', 128, 129, 30),
-      ChartData('w4', 87, 95, 71),
+      ChartData('27/10', 128, 129, 90),
+      ChartData('28/10', 123, 100, 93),
+      ChartData('29/10', 128, 129, 30),
+      ChartData('30/10', 87, 95, 71),
+      ChartData('30/11', 87, 95, 71),
+
     ];
     _tooltip = TooltipBehavior(enable: true);
+    return BlocConsumer<SoilStatusCubit, SoilStatusStates>(
+  listener: (context, state) {
+    // TODO: implement listener
+    print(state);
+  },
+  builder: (context, state) {
+    List<SoilStatusModel>? diseasesModel= SoilStatusCubit.get(context)?.diseasesModel;
     return Scaffold(
       appBar: AppBar(
         title: Text("Soil Status",
@@ -129,18 +143,18 @@ class _SoilStatusState extends State<SoilStatus> {
                                 children: [
                                   Containerpercent(
                                       color: Color(0xffCFA841),
-                                      titel: "%48 potassium"),
+                                      titel: " potassium"),
                                   SizedBox(
                                     width: 10,
                                   ),
                                   Containerpercent(
                                       color: Color(0xffF6C602),
-                                      titel: "%28 Nitrogen"),
+                                      titel: " Nitrogen"),
                                 ],
                               ),
                               Containerpercent(
                                   color: Color(0xff4BA26A),
-                                  titel: "%24 phosphorous"),
+                                  titel: " phosphorous"),
                             ],
                           ),
                         )
@@ -169,6 +183,8 @@ class _SoilStatusState extends State<SoilStatus> {
         ),
       ),
     );
+  },
+);
   }
 }
 

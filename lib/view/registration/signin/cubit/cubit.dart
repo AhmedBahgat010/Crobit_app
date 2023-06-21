@@ -28,7 +28,8 @@ class RegisterCubit extends Cubit<RegisterStates> {
         posteddata: {
         "email":email,
         "userName":name,
-        "password": "A123456789"
+        "password": password,
+
 
     }).then((value) {
       RegisterModel = UserModel.fromJson(value.data);
@@ -36,11 +37,9 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
     }).catchError((error) {
 
-      emit(RegisterErrorState());
-      print("11111111111111111111111111111");
-      print(error["description"]);
-      print("11111111111111111111111111111");
-      print(name);
+      emit(RegisterErrorState(message: error.toString()));
+
+      print(error);
       print(password);
       print(phone);
       print(email);

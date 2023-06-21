@@ -23,7 +23,7 @@ class _WeatherContainerState extends State<WeatherContainer> {
   static String API_KEY =
       '6a2a367454c044ef8b005855232504'; //Paste Your API Here
 
-  String location = 'Mansoura'; //Default location
+  String location = '31.017697, 31.382841'; //Default location
   String weatherIcon = 'heavycloudy.png';
   int temperature = 0;
   int windSpeed = 0;
@@ -97,6 +97,7 @@ class _WeatherContainerState extends State<WeatherContainer> {
 
   @override
   void initState() {
+
     fetchWeatherData(location);
     super.initState();
   }
